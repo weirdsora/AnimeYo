@@ -1,0 +1,7 @@
+{
+  "name": "AnimeYo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
