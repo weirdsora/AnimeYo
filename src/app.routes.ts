@@ -10,4 +10,15 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'anime-info',
+    loadComponent: () => import('./app/pages/anime-info/anime-info.page').then( m => m.AnimeInfoPage)
+  },
+
+  {
+    path: 'anime-info/:id',
+    loadComponent: () => 
+      import('./app/pages/anime-info/anime-info.page').then( m => m.AnimeInfoPage)
+  },
+
 ];

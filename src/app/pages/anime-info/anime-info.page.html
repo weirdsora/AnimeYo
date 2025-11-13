@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    
+    <ion-title>{{ anime?.title || 'Carregando...' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="loading" class="ion-text-center ion-padding-top"></div>
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Carregando detalhes...</p>
+
+  <div *ngIf="anime && !loading">
+    
+    <ion-img [src]="anime.images.jpg.image_url" [alt]="anime.title"></ion-img>
+    
+        
+        <hr> <h2 style="margin-top: 10px;">Sua Nota: {{ userRating || 'Não Avaliado' }}</h2>
+        
+        <div class="ion-padding">
+    <h1>{{ anime.title }}</h1>
+    <p><strong>Nota Jikan:</strong> {{ anime.score }} (Rank: #{{ anime.rank }})</p>
+    
+    <hr>
+    
+    <h2 style="margin-top: 10px;">Sua Nota:</h2>
+    
+    <div style="display: flex; gap: 5px; font-size: 2em; color: var(--ion-color-warning);">
+      <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+        <ion-icon 
+            [name]="star <= (userRating ?? 0) ? 'star' : 'star-outline'" 
+            (click)="onStarClick(star)"
+            style="cursor: pointer;">
+        </ion-icon>
+      </ng-container>
+      
+      <ion-icon 
+          *ngIf="userRating"
+          name="close-circle" 
+          (click)="onStarClick(0)" 
+          style="cursor: pointer; font-size: 0.5em; color: var(--ion-color-danger); margin-left: 10px; align-self: center;">
+      </ion-icon>
+
+    <p>Nota Selecionada: **{{ userRating || 'Não Avaliado' }} / 5**</p>
+    </div>
+  </div>
+  </div>
+
+</ion-content>

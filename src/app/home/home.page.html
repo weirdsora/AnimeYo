@@ -9,7 +9,10 @@
 <ion-content [fullscreen]="true">
 
   <ion-list *ngIf="!loading">
-    <ion-item *ngFor="let anime of topAnime" button lines="full">
+    <ion-item *ngFor="let anime of topAnime" 
+              [routerLink]="['/anime-info', anime.mal_id]"
+              detail="true"
+              lines="full">
       
       <ion-avatar slot="start" style="width: 50px; height: 70px; border-radius: 4px;">
         <img [src]="anime.images.jpg.image_url" style="object-fit: cover;" />

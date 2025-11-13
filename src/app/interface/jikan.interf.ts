@@ -17,3 +17,7 @@ export interface Anime {
 export interface JikanApiResponse {
   data: Anime[];
 }
+
+export interface JikanApiSingleResponse {
+  data: Anime;
+}

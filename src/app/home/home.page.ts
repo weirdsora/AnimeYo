@@ -7,6 +7,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { AnimeService } from '../services/anime.s'; // <--- Mudou
 import { Anime } from '../interface/jikan.interf.js'; // <--- Mudou
+import { RouterLink } from '@angular/router'; // <--- ADICIONE ESTE IMPORT
 
 @Component({
   selector: 'app-home',
@@ -16,8 +17,9 @@ import { Anime } from '../interface/jikan.interf.js'; // <--- Mudou
   imports: [
     IonHeader, IonToolbar, IonTitle, IonContent, 
     IonList, IonItem, IonLabel, IonAvatar, IonSkeletonText,
-    IonBadge, // <--- Adicionado
-    CommonModule
+    IonBadge,
+    CommonModule,
+    RouterLink // <--- ADICIONE AOS IMPORTS
   ],
 })
 export class HomePage implements OnInit {
