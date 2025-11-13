@@ -1,20 +1,39 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Top Animes (Jikan API)
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list *ngIf="!loading">
+    <ion-item *ngFor="let anime of topAnime" button lines="full">
+      
+      <ion-avatar slot="start" style="width: 50px; height: 70px; border-radius: 4px;">
+        <img [src]="anime.images.jpg.image_url" style="object-fit: cover;" />
+      </ion-avatar>
+
+      <ion-label class="ion-text-wrap">
+        <h2>{{ anime.title }}</h2>
+        <p>Rank: {{ anime.rank }}</p>
+      </ion-label>
+
+      <ion-badge slot="end" color="warning">{{ anime.score }}</ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="loading">
+    <ion-item *ngFor="let item of [1,2,3,4,5]">
+      <ion-avatar slot="start" style="width: 50px; height: 70px; border-radius: 4px;">
+        <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h3>
+        <p><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
