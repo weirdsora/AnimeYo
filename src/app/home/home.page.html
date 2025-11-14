@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary" class="custom-bar">
     <ion-title>
-      Top Animes (Jikan API)
+      AnimeYo!
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,7 @@
               detail="true"
               lines="full">
       
-      <ion-avatar slot="start" style="width: 50px; height: 70px; border-radius: 4px;">
+      <ion-avatar slot="start">
         <img [src]="anime.images.jpg.image_url" style="object-fit: cover;" />
       </ion-avatar>
 
@@ -29,13 +29,9 @@
 
   <ion-list *ngIf="loading">
     <ion-item *ngFor="let item of [1,2,3,4,5]">
-      <ion-avatar slot="start" style="width: 50px; height: 70px; border-radius: 4px;">
+      <ion-avatar slot="start">
         <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
       </ion-avatar>
-      <ion-label>
-        <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h3>
-        <p><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></p>
-      </ion-label>
     </ion-item>
   </ion-list>
 

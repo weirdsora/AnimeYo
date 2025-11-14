@@ -19,20 +19,16 @@ import { Anime } from '../../interface/jikan.interf';
 })
 export class AnimeInfoPage implements OnInit {
 
-  // Variáveis para injeção
   private route = inject(ActivatedRoute);
   private animeService = inject(AnimeService);
 
-  // Propriedades do componente
   public anime: Anime | null = null;
   public loading: boolean = true;
   public userRating: number | null = null;
 
   constructor() { }
 
-  // Deve haver apenas UMA definição desta função no componente
 async ngOnInit() {
-  // 1. Pega o 'id' da URL
   const animeId = this.route.snapshot.paramMap.get('id');
 
   if (!animeId) {
@@ -41,12 +37,8 @@ async ngOnInit() {
     return;
   }
   
-  // 2. Chama o serviço para CARREGAR A NOTA ANTES DE TUDO
-  // Usamos 'await' porque getUserRating é uma Promise (função async)
   this.userRating = await this.animeService.getUserRating(Number(animeId));
 
-  // 3. Chama o serviço para buscar os detalhes do anime (Observable)
-  // Usamos '.subscribe()' porque getAnimeById retorna um Observable
   this.animeService.getAnimeById(animeId).subscribe({
     next: (data) => {
       this.anime = data;
@@ -63,14 +55,11 @@ async ngOnInit() {
     let newRating = rating;
 
     if (this.userRating === rating) {
-        newRating = 0; // Se clicar na estrela atual, desmarca (nota 0)
+        newRating = 0;
     }
 
     this.userRating = newRating;
-    
-    // Salva a nova nota no Storage
     if (this.anime) {
-      // O ID do anime é um número, então garantimos que seja Number
       await this.animeService.saveUserRating(this.anime.mal_id, newRating);
       console.log(`Nota ${newRating} salva para o anime ${this.anime.title}`);
     }

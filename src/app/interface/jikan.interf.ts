@@ -1,4 +1,3 @@
-// Interface para o item de anime individual
 export interface Anime {
   mal_id: number;
   title: string;
@@ -12,8 +11,6 @@ export interface Anime {
   synopsis: string;
 }
 
-// Interface para a resposta completa da API
-// A API Jikan v4 retorna os resultados dentro de um campo "data"
 export interface JikanApiResponse {
   data: Anime[];
 }

@@ -1,13 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { 
-  IonHeader, IonToolbar, IonTitle, IonContent, 
-  IonList, IonItem, IonLabel, IonAvatar, IonSkeletonText,
-  IonBadge // <--- Importado
-} from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonAvatar, IonSkeletonText, IonBadge} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-import { AnimeService } from '../services/anime.s'; // <--- Mudou
-import { Anime } from '../interface/jikan.interf.js'; // <--- Mudou
-import { RouterLink } from '@angular/router'; // <--- ADICIONE ESTE IMPORT
+import { AnimeService } from '../services/anime.s'; 
+import { Anime } from '../interface/jikan.interf.js'; 
+import { RouterLink } from '@angular/router'; 
 
 @Component({
   selector: 'app-home',
@@ -15,21 +11,26 @@ import { RouterLink } from '@angular/router'; // <--- ADICIONE ESTE IMPORT
   styleUrls: ['home.page.scss'],
   standalone: true,
   imports: [
-    IonHeader, IonToolbar, IonTitle, IonContent, 
-    IonList, IonItem, IonLabel, IonAvatar, IonSkeletonText,
+    IonHeader, 
+    IonToolbar, 
+    IonTitle, 
+    IonContent, 
+    IonList, 
+    IonItem, 
+    IonLabel, 
+    IonAvatar,
+    IonSkeletonText, 
     IonBadge,
     CommonModule,
-    RouterLink // <--- ADICIONE AOS IMPORTS
+    RouterLink 
   ],
 })
 export class HomePage implements OnInit {
   
-  topAnime: Anime[] = []; // <--- Mudou
+  topAnime: Anime[] = [];
   loading: boolean = true;
 
-  // Injeção do novo Serviço
-  private animeService = inject(AnimeService); // <--- Mudou
-
+  private animeService = inject(AnimeService); 
   constructor() {}
 
   ngOnInit() {
@@ -38,9 +39,9 @@ export class HomePage implements OnInit {
 
   carregarTopAnime() {
     this.loading = true;
-    this.animeService.getTopAnime().subscribe({ // <--- Mudou
+    this.animeService.getTopAnime().subscribe({
       next: (data: Anime[]) => {
-        this.topAnime = data; // <--- Mudou
+        this.topAnime = data;
         this.loading = false;
       },
       error: (erro: any) => {

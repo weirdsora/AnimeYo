@@ -10,20 +10,22 @@
 
 <ion-content>
 
-  <div *ngIf="loading" class="ion-text-center ion-padding-top"></div>
-    <ion-spinner name="crescent"></ion-spinner>
-    <p>Carregando detalhes...</p>
-
   <div *ngIf="anime && !loading">
     
     <ion-img [src]="anime.images.jpg.image_url" [alt]="anime.title"></ion-img>
     
         
-        <hr> <h2 style="margin-top: 10px;">Sua Nota: {{ userRating || 'Não Avaliado' }}</h2>
-        
         <div class="ion-padding">
     <h1>{{ anime.title }}</h1>
     <p><strong>Nota Jikan:</strong> {{ anime.score }} (Rank: #{{ anime.rank }})</p>
+
+    <div class="ion-padding">
+        <h2>Sinopse</h2>
+        <p class="ion-text-wrap" style="line-height: 1.6;">
+            {{ anime.synopsis || 'Sinopse não disponível.' }}
+        </p>
+
+        </div>
     
     <hr>
     
