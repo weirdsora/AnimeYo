@@ -1,12 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary" class="custom-bar">
+<ion-header>
+  <ion-toolbar color="primary" class="custom-toolbar">
     <ion-title>
       AnimeYo!
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" >
 
   <ion-list *ngIf="!loading">
     <ion-item *ngFor="let anime of topAnime" 

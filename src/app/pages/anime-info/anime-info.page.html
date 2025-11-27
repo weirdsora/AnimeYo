@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary" class="custom-toolbar">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
@@ -29,25 +29,11 @@
     
     <hr>
     
-    <h2 style="margin-top: 10px;">Sua Nota:</h2>
     
     <div style="display: flex; gap: 5px; font-size: 2em; color: var(--ion-color-warning);">
       <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-        <ion-icon 
-            [name]="star <= (userRating ?? 0) ? 'star' : 'star-outline'" 
-            (click)="onStarClick(star)"
-            style="cursor: pointer;">
-        </ion-icon>
       </ng-container>
-      
-      <ion-icon 
-          *ngIf="userRating"
-          name="close-circle" 
-          (click)="onStarClick(0)" 
-          style="cursor: pointer; font-size: 0.5em; color: var(--ion-color-danger); margin-left: 10px; align-self: center;">
-      </ion-icon>
 
-    <p>Nota Selecionada: **{{ userRating || 'Não Avaliado' }} / 5**</p>
     </div>
   </div>
   </div>
